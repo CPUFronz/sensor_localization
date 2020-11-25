@@ -14,6 +14,10 @@ A Conda *.yml file is provided for recreating the development environment. Just 
 
 To run, activate the Conda environment, place the data into the data folder and type ``python train_models.py && python localize.py``.
 
+## Data
+
+We use proprietary cow data, which we can unfortunately not share. We use [MERRA2 data](https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/), the *.csv files for each position need the corresponding postal code as prefix, e.g. ``1210_SoDa_MERRA2_lat48.283_lon16.412_2019-01-01_2019-12-31_2029583187.csv``.
+
 ## Citing
 
 If you find our work useful, please cite it using the following BibTex entry:

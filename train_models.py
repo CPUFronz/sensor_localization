@@ -93,7 +93,6 @@ def preprocess_cow_data(path_weather, path_animals):
 
             print('Preprocessing Cow Data: {:3d}/{:3d}'.format(idx+1, len(csv_files)))
 
-    df = df.reset_index()
     return df
 
 
@@ -141,9 +140,10 @@ if __name__ == '__main__':
     if not os.path.exists(DF_COW):
         df_cow = preprocess_cow_data(AT_WEATHER_DATA, COW_DATA)
         df_cow.to_csv(DF_COW, index=False)
-    else:
-        df_cow = pd.read_csv(DF_COW)
-        df_cow['datetime'] = pd.to_datetime(df_cow['datetime'], format='%Y-%m-%d %H:%M:%S')
+        del df_cow
+
+    df_cow = pd.read_csv(DF_COW)
+    df_cow['datetime'] = pd.to_datetime(df_cow['datetime'], format='%Y-%m-%d %H:%M:%S')
 
     df_cow = df_cow.groupby(['animal_id', pd.Grouper(key='datetime', freq='4h')]).mean()
     df_cow = df_cow.reset_index()
