@@ -126,7 +126,7 @@ def train_cow_model(df, window_size=WINDOW_SIZE, val_size=VAL_SIZE, per_cow=Fals
     else:
         X_train, X_val, y_train, y_val = train_test_split(df[input_params], df[target], test_size=val_size, random_state=SEED)
 
-    automl = autosklearn.regression.AutoSklearnRegressor(time_left_for_this_task=AUTOML_TIME, ml_memory_limit=16 * 1024, seed=SEED)
+    automl = autosklearn.regression.AutoSklearnRegressor(time_left_for_this_task=AUTOML_TIME, memory_limit=16*1024, seed=SEED)
     mdl = automl.fit(X_train, y_train)
     joblib.dump(mdl, cow_weather_model)
 
